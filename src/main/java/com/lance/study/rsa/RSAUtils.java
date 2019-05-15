@@ -1,6 +1,8 @@
 package com.lance.study.rsa;
 
 import javax.crypto.Cipher;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
 import java.io.ByteArrayOutputStream;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -287,7 +289,7 @@ public class RSAUtils {
     }
 
     public static void main(String[] args) throws Exception{
-        createKeyPairs(1024);
+//        createKeyPairs(1024);
 //        String pubKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPU2DRTkwWmUtdoLtNC/NfkA4pOpBPDzhP2kJyfNHL6EeBcCxOXsuwJwyhWrLeUhECs0N4b0B81vUDpcuTwhPV+kMpZUKvVZK/jkypuWkoqn6HE3w43jkC5v1DX0/+uBEIUv4t0ls/hGKUz5hKeI7y33Cb+Jf3L3QaF7TpqrG5NwIDAQAB";
 //        String priKey = "MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAM9TYNFOTBaZS12gu00L81+QDik6kE8POE/aQnJ80cvoR4FwLE5ey7AnDKFast5SEQKzQ3hvQHzW9QOly5PCE9X6QyllQq9Vkr+OTKm5aSiqfocTfDjeOQLm/UNfT/64EQhS/i3SWz+EYpTPmEp4jvLfcJv4l/cvdBoXtOmqsbk3AgMBAAECgYA+Fv9Yz7UT04bxnFBbq6eQSAklqcdMFgfMSlY6CU2fXooDpr9uHQ+tSpSKwintUPCNOXiMWe0bNhkcpYuJTcc4dMGDFI2DldU380tprQXixyVlnSQPdwpyWbKaIPJ6CfwN4Xre7JONDRiY2sQd1Q6aUt5JNw1ITXE18n4t+QnYAQJBAPTz67gQSVMEl7+FNUEw/NtSrBkHBQlBDXiGQd1ftufr+QV0hMkbDOKLfqUiUkkzSiZd97y18LA8as6X1WfbDAECQQDYrQmAr36a49o+7u/xxnZt58x+Sk7vOc8byMa9k9fX/t7xzsjHECa6ccERIZW4HGTxrC+ID+TV/NQVoVTp5iU3AkABnk7zY2AopUIfaNDmQl2ZUV2DuNEms4BUSIbM4KIDvEJj79YkwgH+yS8oBicHBsi5oitN2uHhODT4cnZdfkwBAkBR6rGCBlc+JdCYJGtwo9CYYp9MS7ml9dwYLAL/H0rmLUSKdNwxbijGKkWMvX7GGW4MdEWQEjo4sJpaByF8QHdnAkAdFAjouDehaoteNSq9ag/uxY1M/E1bOH8PpPKG84vtIhewO3BgG4aeD7BxEO8TzRTVFN5b7YgqeShIwVmcQvhJ";
 //        String str = "哈哈哈";
@@ -303,6 +305,6 @@ public class RSAUtils {
 //        System.err.println("加密数据:"+分段加密数据);
 //        String 分段解密数据 = segmentationDecryptToBase64(分段加密数据, getPrivateKey(priKey));
 //        System.err.println(分段解密数据);
-    }
 
+    }
 }

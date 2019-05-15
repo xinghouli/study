@@ -15,6 +15,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 @EnableAsync
 public class ThreadConfig {
+
+    private static final ThreadPoolExecutor.CallerRunsPolicy callerRunsPolicy = new ThreadPoolExecutor.CallerRunsPolicy();
+
     /**
      * 无返回值的任务使用execute(Runnable)
      * 有返回值的任务使用submit(Runnable)
@@ -26,7 +29,7 @@ public class ThreadConfig {
      *
      */
     @Bean(name = "taskExecutor")
-    public TaskExecutor taskExecutor(){
+    public ThreadPoolTaskExecutor taskExecutor(){
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         /**
          * 配置线程个数
@@ -52,9 +55,10 @@ public class ThreadConfig {
          * 4 DiscardOldestPolicy  如果执行器未关闭 请求并重试任务, 丢弃最老的任务
          * 5 实现RejectExecutionHandler接口,自定义策略
          */
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.setRejectedExecutionHandler(callerRunsPolicy);
         executor.initialize();
         return executor;
     }
+
 
 }

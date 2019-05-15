@@ -7,7 +7,7 @@ public class LearnThread {
     static volatile int i = 1;
     static int count = 100;
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) {
 
         ReentrantLock reentrantLock = new ReentrantLock();
         Condition condition = reentrantLock.newCondition();
