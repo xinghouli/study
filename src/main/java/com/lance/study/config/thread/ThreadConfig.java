@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * https://blog.csdn.net/foreverling/article/details/78073105
  */
 @Configuration
-@EnableAsync
+//@EnableAsync
 public class ThreadConfig {
 
     private static final ThreadPoolExecutor.CallerRunsPolicy callerRunsPolicy = new ThreadPoolExecutor.CallerRunsPolicy();

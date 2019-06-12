@@ -23,30 +23,38 @@ public class UserService {
     @Async("taskExecutor")
     public void insert(User user) {
         userDao.insert(user);
+        System.out.println(userDao);
         System.out.println(Thread.currentThread().getName());
     }
 
 
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void batchInsert0(List<User> list){
         list.forEach(s->{
-            if(s.getAge()%5 != 0){
-                return;
-            }
+//            if(s.getAge()%5 != 0){
+//                return;
+//            }
             userDao.insert(s);
-            System.out.println(Thread.currentThread().getName());
+//            System.out.println(userDao);
+//            System.out.println(Thread.currentThread().getName());
         });
     }
 
-    public void batchInsert(List<User> list){
+    public void batchInsert(List<User> list) {
         list.forEach(s->{
-            taskExecutor.execute(()-> {
-                if(s.getAge()%5 != 0){
-                    throw new RuntimeException();
+            taskExecutor.submit(()-> {
+//                if(s.getAge()%5 != 0){
+//                    throw new RuntimeException();
+//                }
+                try {
+                    Thread.sleep(8888);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
                 userDao.insert(s);
                 System.out.println(Thread.currentThread().getName());
             });
+            System.out.println("99999999999999999");
         });
     }
 
@@ -58,6 +66,7 @@ public class UserService {
                     return "fail";
                 }
                 userDao.insert(s);
+                System.out.println(userDao);
                 System.out.println(Thread.currentThread().getName());
                 return "OK";
             });
