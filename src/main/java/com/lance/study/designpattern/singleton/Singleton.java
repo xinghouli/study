@@ -5,21 +5,21 @@ public class Singleton {
     private Singleton() {
     }
 
-    public enum SingletonEnum{
-        /**
-         *
-         */
+    enum SingletonEnum{
         INSTANCE;
 
-        private Singleton singleton = null;
+        private Singleton singleton;
 
         SingletonEnum() {
-            singleton = new Singleton();
+            this.singleton = new Singleton();
         }
 
-        public Singleton getSingleton(){
+        public Singleton getSingleton() {
             return singleton;
         }
     }
 
+  public static void main(String[] args) {
+      Singleton singleton = SingletonEnum.INSTANCE.getSingleton();
+  }
 }

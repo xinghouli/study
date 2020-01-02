@@ -4,7 +4,7 @@ import java.util.Properties;
 
 //launcher.Class
 public class BootstrapClassLoader extends ClassLoader{
-
+    //加载器顺序
     private static String bootClassPath = System.getProperty("sun.boot.class.path");
 
     private static String extClassPath = System.getProperty("java.ext.dirs");

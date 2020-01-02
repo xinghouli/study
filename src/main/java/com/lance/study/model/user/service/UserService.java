@@ -8,6 +8,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -81,4 +82,8 @@ public class UserService {
         return l;
     }
 
+  public static void main(String[] args) {
+      Method[] declaredMethods = UserService.class.getDeclaredMethods();
+    System.out.println(declaredMethods.toString());
+  }
 }

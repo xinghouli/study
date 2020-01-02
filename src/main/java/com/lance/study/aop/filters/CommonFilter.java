@@ -19,6 +19,11 @@ public class CommonFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("------------------------------");
+        long l = System.currentTimeMillis();
+    System.out.println("========"+l);
+        chain.doFilter(request,response);
+        long l1 = System.currentTimeMillis();
+        System.out.println("=========="+l1);
+    System.out.println(l1-l);
     }
 }

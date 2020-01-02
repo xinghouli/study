@@ -1,5 +1,6 @@
 package com.lance.study.exeicise;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,6 +12,8 @@ public class LearnThread {
 
         ReentrantLock reentrantLock = new ReentrantLock();
         Condition condition = reentrantLock.newCondition();
+//        CountDownLatch countDownLatch = new CountDownLatch(10);
+//        countDownLatch.countDown();
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -27,6 +30,7 @@ public class LearnThread {
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             } finally {
+                                String i = "";
                             }
                         }
                     }
