@@ -1,6 +1,9 @@
 package com.lance.study.model.user.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lance.study.model.user.dao.UserDao;
+import com.lance.study.model.user.entity.Us;
 import com.lance.study.model.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -8,9 +11,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -82,8 +88,21 @@ public class UserService {
         return l;
     }
 
-  public static void main(String[] args) {
-      Method[] declaredMethods = UserService.class.getDeclaredMethods();
-    System.out.println(declaredMethods.toString());
+  public static void main(String[] args) throws Exception{
+//      User user = new User();
+//      user.setName("hhhh");
+//      user.setAge(12);
+//      user.setBirthday(new Date());
+//      ObjectMapper objectMapper = new ObjectMapper();
+//      String s = objectMapper.writeValueAsString(user);
+//      Object o = objectMapper.readValue(s, new TypeReference<User>() {
+//      });
+//    System.out.println("====="+o);
+//      System.out.println(s);
+//      Map user1 = objectMapper.readValue(s, Map.class);
+//    System.out.println(user1);
+	  ObjectMapper objectMapper = new ObjectMapper();
+	  String s = objectMapper.writeValueAsString(new Date());
+    System.out.println(s);
   }
 }

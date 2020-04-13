@@ -1,15 +1,18 @@
 spring:
+  redis:
   datasource:
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
-  profiles:
-    active: local
+#  profiles:
+#    active: local
   application:
     name: study
   mvc:
     throw-exception-if-no-handler-found: true
+  aop:
+    proxy-target-class: true
 mybatis:
   mapper-locations: classpath:mapper/*/*.xml
 server:
@@ -23,6 +26,13 @@ server:
       enabled: true
       dir: ${logging.path}/undertow/${spring.application.name}
       pattern: combined
+  #http header 最大字节数(B KB MB等 sb 2.x支持带单位)
+  max-http-header-size: 20KB
+  #读取一个http request的读取超时防止满慢请求
+  connection-timeout: 8S
+  #response至少多大才适用GZIP
+  compression:
+    min-response-size: 2KB
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
@@ -33,6 +43,12 @@ eureka:
 logging:
   home: ${logging.path}/${spring.application.name}
   file: ${logging.home}/${spring.application.name}.log
-  path: /logs
+  path: ./logs
   level:
     root: info
+#debug: true
+#id: 8
+#name: yy
+test:
+  enabled: true
+  autoconfig: hhhhh
