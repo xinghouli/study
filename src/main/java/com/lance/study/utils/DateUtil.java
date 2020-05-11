@@ -125,14 +125,25 @@ public class DateUtil {
         return localDateTimeToDate(with);
     }
 
-    public static boolean isAfterAndEqual(Date originDate, Date date){
+	/**
+	 * date >= originDate
+	 * @param originDate
+	 * @param date
+	 * @return
+	 */
+	public static boolean isAfterAndEqual(Date originDate, Date date){
         LocalDateTime originLocalDateTime = dateToLocalDateTime(originDate);
         LocalDateTime localDateTime = dateToLocalDateTime(date);
         return (localDateTime.isAfter(originLocalDateTime) || localDateTime.isEqual(originLocalDateTime));
     }
 
-
-    public static boolean isBeforeAndEqual(Date originDate, Date date){
+	/**
+	 * date <= originDate
+	 * @param originDate
+	 * @param date
+	 * @return
+	 */
+	public static boolean isBeforeAndEqual(Date originDate, Date date){
         LocalDateTime originLocalDateTime = dateToLocalDateTime(originDate);
         LocalDateTime localDateTime = dateToLocalDateTime(date);
         return (localDateTime.isBefore(originLocalDateTime) || localDateTime.isEqual(originLocalDateTime));
@@ -149,6 +160,7 @@ public class DateUtil {
       Date dateTime1 = getDateTime(2020, 1, 3, 5, 10, 30);
 //      Date dateTime2 = getDateTime(2020, 1, 3, 5, 10, 30);
     System.out.println(isBeforeAndEqual(dateTime,dateTime1));
+    System.out.println(isAfterAndEqual(dateTime,dateTime1));
 //      TemporalAdjuster temporalAdjuster = TemporalAdjusters.firstDayOfMonth();
 //      LocalDate with = localDateTime.with(temporalAdjuster);
 //    System.out.println(with);
