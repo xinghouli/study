@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class User extends Us{
 
-    private  volatile int id;
+    private transient int id;
 
     @NotBlank(message = "name不能为空")
     private String name;

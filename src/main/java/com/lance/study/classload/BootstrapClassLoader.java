@@ -37,7 +37,8 @@ public class BootstrapClassLoader extends ClassLoader{
 
 
     }
-
+	//如果不想打破双亲委派模型，那么只需要重写findClass方法即可
+	//如果想打破双亲委派模型，那么就重写整个loadClass方法
     //双亲委派
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {

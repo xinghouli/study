@@ -2,9 +2,11 @@ package com.lance.study.utils;
 
 import java.time.*;
 import java.time.chrono.Chronology;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
+import java.util.Random;
 
 /**
 * @see java.util.Date
@@ -149,18 +151,35 @@ public class DateUtil {
         return (localDateTime.isBefore(originLocalDateTime) || localDateTime.isEqual(originLocalDateTime));
     }
 
+	/**
+	 * 日期间隔天数
+	 * @param dateFrom
+	 * @param dateTo
+	 * @return
+	 */
+	public static long getDayDifference(Date dateFrom, Date dateTo){
+		LocalDate from = dateFrom.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate to = dateTo.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return ChronoUnit.DAYS.between(from,to);
+	}
+
 
 
 
 
   public static void main(String[] args) {
-      Date dateTime = getDateTime(2019, 12, 21, 10, 20, 30);
+	  Random random = new Random();
+    System.out.println(random.nextInt(0));
+
+      Date dateTime = getDateTime(2020, 8, 2, 23, 20, 30);
 
 
       Date dateTime1 = getDateTime(2020, 1, 3, 5, 10, 30);
+
+    System.out.println(getDayDifference(dateTime,dateTime1));
 //      Date dateTime2 = getDateTime(2020, 1, 3, 5, 10, 30);
-    System.out.println(isBeforeAndEqual(dateTime,dateTime1));
-    System.out.println(isAfterAndEqual(dateTime,dateTime1));
+//    System.out.println(isBeforeAndEqual(dateTime,dateTime1));
+//    System.out.println(isAfterAndEqual(dateTime,dateTime1));
 //      TemporalAdjuster temporalAdjuster = TemporalAdjusters.firstDayOfMonth();
 //      LocalDate with = localDateTime.with(temporalAdjuster);
 //    System.out.println(with);

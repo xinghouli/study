@@ -27,22 +27,7 @@ public class T extends T1{
     }
 }
 
-class A implements Callable {
-    private Integer a ;
 
-    public Integer getA() {
-        return a;
-    }
-
-    public void setA(Integer a) {
-        this.a = a;
-    }
-
-    @Override
-    public Object call() throws Exception {
-        return null;
-    }
-}
 
 enum B{
     B(0,"");

@@ -7,11 +7,12 @@ import com.lance.study.model.user.service.TestService;
 import java.lang.reflect.Method;
 import java.util.*;
 
-public class TestCast {
+public class TestCast  {
   public static void main(String[] args) {
       Method[] declaredMethods = Favorites.class.getDeclaredMethods();
-      boolean annotationPresent = declaredMethods[0].isAnnotationPresent(TestAnno.class);
-    System.out.println(annotationPresent);
+      for(Method m : declaredMethods){
+      System.out.println(m.isAnnotationPresent(TestAnno.class));
+      }
       Favorites favorites = new Favorites();
       favorites.putFavorites(String.class,"aaaa");
       String favorites1 = favorites.getFavorites(String.class);
@@ -40,7 +41,7 @@ class Favorites{
     public <T> void putFavorites(Class<T> type, T instance){
         favorites.put(type,instance);
     }
-
+	@TestAnno
     public <T> T getFavorites(Class<T> type){
         return type.cast(favorites.get(type));
     }
