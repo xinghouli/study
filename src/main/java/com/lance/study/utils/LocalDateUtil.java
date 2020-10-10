@@ -1,9 +1,6 @@
 package com.lance.study.utils;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -34,6 +31,10 @@ public class LocalDateUtil {
      */
     public static long getMonthBetween(LocalDate from, LocalDate to){
         return ChronoUnit.MONTHS.between(from,to);
+    }
+
+    public static long getMonthBetween(YearMonth from, YearMonth to){
+    	return ChronoUnit.MONTHS.between(from,to);
     }
 
     /**
@@ -87,7 +88,10 @@ public class LocalDateUtil {
     }
 
   public static void main(String[] args) {
-      LocalDate localDate = LocalDate.of(2019, 12, 25);
-
+      LocalDate localDate = LocalDate.of(2020, 11, 25);
+      LocalDate localDate1 = LocalDate.of(2020,12,30);
+	  Period between = Period.between(localDate, localDate1);
+	  System.out.println(between.getMonths());
+//    System.out.println(getMonthBetween(localDate,localDate1));
   }
 }
